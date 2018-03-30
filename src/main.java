@@ -19,6 +19,7 @@ public class main{
         System.out.println(" 1 : fichier vers TABR");
         System.out.println(" 2 : afficher TABR");
         System.out.println(" 3 : TABR vers fichier");
+        System.out.println(" 4 : Verification TABR");
         System.out.println(" 8 : TABR vers ABR");
         select = scan.nextInt();
         switch (select) {
@@ -35,6 +36,9 @@ public class main{
           case 3:
         	  TabrToFichier(tabr);
         	  break;
+          case 4:
+        	  System.out.println(verifArthur(tabr));
+        	  break;
           case 8:
         	  tabrToAbr(tabr);
         	  break;
@@ -44,6 +48,20 @@ public class main{
         }
       }
       scan.close();
+  }
+  
+  public static boolean verifArthur(Case tabr[]) {
+	  boolean verif = true;
+	  int intervalle = 0;
+	  for(int i = 0; i < tabr.length; i++) {
+		  if(tabr[i].getMin() > tabr[i].getMax()) verif = false;
+		  if( i > 0 ) {
+			  if( tabr[i].getMin() < intervalle)  verif = false;  
+		  }
+		  intervalle = tabr[i].getMax();
+	  }
+	  
+	  return verif;
   }
   
   public static void tabrToAbr(Case tabr[]) {

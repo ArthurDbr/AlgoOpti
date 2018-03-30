@@ -32,5 +32,14 @@ public class Case{
 	  return this.abr.getValeurs();
   }
 
+  public void ajoutValeur(int v) {
+	  if ((v > min) && (v < max)) {
+		  this.abr.ajoutValeur(v);
+	  }
+  }
+  
+  public void supprimerValeur(int v) {
+	  abr.supprimerValeur(v);
+  }
 
 }

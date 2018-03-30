@@ -133,31 +133,29 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 	 * @param valeur : la valeur à ajouter à l'arbre.
 	 * @return le noeud correspondant soit à la valeur ajoutée, soit à la valeur déjà présente.
 	 */
-	public NoeudABR<Integer> ajoutValeur(int valeur)
+	public void ajoutValeur(int valeur)
 	{
 		if( (this._valeur - valeur)>0)
 		{
 			if(this._filsG!=null)
 			{
-				return _filsG.ajoutValeur(valeur);
+				 _filsG.ajoutValeur(valeur);
 			}else
 			{
 				_filsG=new NoeudABR<Integer>(valeur);
-				return _filsG;
+				
 			}
 		}else if((this._valeur - valeur)<0)
 		{
 			if(this._filsD!=null)
 			{
-				return _filsD.ajoutValeur(valeur);
+				 _filsD.ajoutValeur(valeur);
 			}else
 			{
 				_filsD=new NoeudABR<Integer>(valeur);
-				return _filsD;
 
 			}
-		}else
-			return this;
+		}
 
 
 	}

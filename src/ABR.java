@@ -69,14 +69,18 @@ public class ABR<Integer extends Comparable<Integer>> {
 	 * @param valeur : la valeur à ajouter à l'ABR.
 	 * @return le noeud correspondant soit à la valeur ajoutée, soit à la valeur déjà présente.
 	 */
-	public NoeudABR<Integer> ajoutValeur(int valeur)
+	public void ajoutValeur(int valeur)
 	{
 		if (arbreVide())
 		{
 			this._racine=new NoeudABR<Integer>(valeur);
-			return this._racine;
 		}else
-			return this._racine.ajoutValeur(valeur);
+			this._racine.ajoutValeur(valeur);
+	}
+	
+	public void supprimerValeur(int v) {
+		
+		
 	}
 
 

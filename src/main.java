@@ -138,6 +138,32 @@ public class main{
     }
       return nbLignes;
   }
+  
+  public int bonneCase(int v) {
+	  int i = 0;
+	  while (i < tabr.length) {
+		  if ( !(v >= tabr[i].getMin()) && (v <= tabr[i].getMax())) {
+			  i++;
+		  }else {
+			  return i;
+		  }
+	  }
+	  if ((v >= tabr[i].getMin()) && (v >= tabr[i].getMax())) {
+		  return i;
+	  }else {
+		  return -1;
+	  }
+	  
+  }
+  
+  public void supprimerValeur(int v) {
+	  int c = 0;
+	  if (( c = bonneCase(v)) != -1 ) {
+		  tabr[c].supprimerValeur(c);
+	  }else {
+		  System.out.print("la valeur n existe pas dans le tabr");
+	  }
+  }
 
 
 }

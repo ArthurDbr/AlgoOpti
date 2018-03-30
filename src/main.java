@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class main{
 
     private static Case tabr[];
+    private static ABR abr;
     private static Boolean fin = true;
     private static Scanner scan = new Scanner(System.in);
 
@@ -18,6 +19,7 @@ public class main{
         System.out.println(" 1 : fichier vers TABR");
         System.out.println(" 2 : afficher TABR");
         System.out.println(" 3 : TABR vers fichier");
+        System.out.println(" 8 : TABR vers ABR");
         select = scan.nextInt();
         switch (select) {
           case 1:
@@ -33,12 +35,28 @@ public class main{
           case 3:
         	  TabrToFichier(tabr);
         	  break;
+          case 8:
+        	  tabrToAbr(tabr);
+        	  break;
           default :
             fin = false;
             break;
         }
       }
       scan.close();
+  }
+  
+  public static void tabrToAbr(Case tabr[]) {
+	  String val="";
+	  String split[];
+	  abr = new ABR();
+	  for(int i = 0; i < tabr.length; i++) {
+		  val = tabr[i].getValeurs();
+		  split = val.split(":");
+		  for(int j = 0; j < split.length; j++){
+		     abr.ajoutValeur(Integer.parseInt(split[i]));
+		  }
+	  }
   }
   
   public static  boolean TabrToFichier(Case tabr[]) throws IOException{
@@ -52,7 +70,7 @@ public class main{
 	    {
 	    	PrintWriter pWriter = new PrintWriter(new FileWriter(nomfic, true));
 	    	for(int i = 0; i < tabr.length; i++) {
-	    		pWriter.print(tabr[i].getMin()+":"+tabr[i].getMax()+";"+tabr[i].getAllNoeud()+"\n");
+	    		pWriter.print(tabr[i].getMin()+":"+tabr[i].getMax()+";"+tabr[i].getValeurs()+"\n");
 	    	}
 	        pWriter.close() ;
 
@@ -104,7 +122,7 @@ public class main{
     }
     catch (FileNotFoundException exception)
     {
-        System.out.println ("Le fichier n'a pas été trouvé");
+        System.out.println ("Le fichier n'a pas ete trouve");
     }
       return true;
   }

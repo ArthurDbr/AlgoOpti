@@ -28,8 +28,13 @@ public class Case{
     System.out.println("["+this.min+" : "+this.max+" ; "+this.abr.toString()+"]");
   }
   
-  public String getAllNoeud() {
+  
+  public String getValeurs() {
 	  return this.abr.getValeurs();
+  }
+  
+  public void getSuivAbr() {
+	  
   }
 
   public void ajoutValeur(int v) {

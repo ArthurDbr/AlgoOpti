@@ -64,9 +64,9 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui ajoute une valeur dans l'ABR, si elle n'est pas déjà présente.
-	 * @param valeur : la valeur à ajouter à l'ABR.
-	 * @return le noeud correspondant soit à la valeur ajoutée, soit à la valeur déjà présente.
+	 * Methode recursive qui ajoute une valeur dans l'ABR, si elle n'est pas deja� presente.
+	 * @param valeur : la valeur a� ajouter à l'ABR.
+	 * @return le noeud correspondant soit a� la valeur ajoutee, soit a� la valeur deja� presente.
 	 */
 	public void ajoutValeur(int valeur)
 	{

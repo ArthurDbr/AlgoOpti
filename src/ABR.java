@@ -54,7 +54,7 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode qui teste si l'ABR est vide.
+	 * Methode qui teste si l'ABR est vide.
 	 * @return vrai si l'ABR est vide ; faux sinon.
 	 */
 	public boolean arbreVide()
@@ -84,8 +84,8 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui retourne le nombre de noeuds de l'ABR.
-	 * @return le nombre de noeuds présents dans l'ABR.
+	 * Methode recursive qui retourne le nombre de noeuds de l'ABR.
+	 * @return le nombre de noeuds presents dans l'ABR.
 	 */
 	public int nbNoeuds()
 	{
@@ -94,73 +94,15 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui recherche une valeur dans l'ABR.
-	 * @param valeur : la valeur à chercher.
-	 * @return le noeud correspondant à la valeur recherchée
-	 * 		   si elle est présente dans l'ABR ; null, sinon.
+	 * Methode recursive qui recherche une valeur dans l'ABR.
+	 * @param valeur : la valeur a� chercher.
+	 * @return le noeud correspondant à la valeur recherchee
+	 * 		   si elle est presente dans l'ABR ; null, sinon.
 	 */
 	public NoeudABR<Integer> rechercheNoeud(int valeur)
 	{
 		return arbreVide()?null:_racine.rechercheNoeud(valeur);
 	}
-
-	/**
-	 * Méthode qui teste si une valeur appartient à l'ABR.
-	 * @param valeur : la valeur considérée.
-	 * @return vrai si la valeur est présente dans l'ABR ; faux sinon.
-	 */
-	public boolean appartient(int valeur)
-	{
-		return rechercheNoeud(valeur)!=null;
-	}
-
-
-	/**
-	 * Méthode qui retourne le premier noeud de l'ABR.
-	 * @return le premier noeud de l'ABR.
-	 */
-	public NoeudABR<Integer> premierNoeud()
-	{
-		return arbreVide()?null:_racine.premierNoeud();
-
-	}
-
-
-	/**
-	 * Méthode qui retourne le dernier noeud de l'ABR.
-	 * @return le dernier noeud de l'ABR.
-	 */
-	public NoeudABR<Integer> dernierNoeud()
-	{
-		return arbreVide()?null:_racine.dernierNoeud();
-
-	}
-
-
-	/**
-	 * Méthode récursive qui retourne le père du noeud considéré, dans l'ABR.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud père du noeud considéré, dans l'ABR.
-	 */
-	public NoeudABR<Integer> noeudPere(NoeudABR<Integer> noeud)
-	{
-		return arbreVide()?null:_racine.noeudPere(noeud,null);
-
-	}
-
-
-	/**
-	 * Méthode récursive qui retourne le noeud suivant du noeud courant, dans l'ABR.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud suivant du noeud considéré, dans l'ABR.
-	 */
-	public NoeudABR<Integer> noeudSuivant(NoeudABR<Integer> noeud)
-	{
-		return arbreVide()?null:_racine.noeudSuivant(noeud,null);
-
-
-	}
-
 
 
 

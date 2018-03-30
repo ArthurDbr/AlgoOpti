@@ -124,14 +124,9 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 
 
 
-	/* Méthodes à compléter */
-
-
 	/**
-	 * Méthode récursive qui ajoute une valeur dans le sous-arbre dont le noeud courant est la racine,
-	 * s'il n'est pas déjà présent.
-	 * @param valeur : la valeur à ajouter à l'arbre.
-	 * @return le noeud correspondant soit à la valeur ajoutée, soit à la valeur déjà présente.
+	 * @param valeur : la valeur a� ajouter a� l'arbre.
+	 * @return le noeud correspondant soit a� la valeur ajoutee, soit a� la valeur deja� presente.
 	 */
 	public void ajoutValeur(int valeur)
 	{
@@ -162,8 +157,7 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui retourne le nombre de noeuds du sous-arbre dont le noeud courant est la racine.
-	 * @return le nombre de noeuds présents dans le sous-arbre courant.
+	 * @return le nombre de noeuds presents dans le sous-arbre courant.
 	 */
 	public int nbNoeuds()
 	{
@@ -184,10 +178,8 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui recherche une valeur dans le sous-arbre
-	 * dont le noeud courant est la racine.
-	 * @param valeur : la valeur à chercher.
-	 * @return le noeud correspondant à la valeur recherchée si elle est présente
+	 * @param valeur : la valeur a� chercher.
+	 * @return le noeud correspondant a� la valeur recherchee si elle est presente
 	 * 		   dans le sous-arbre courant ; null, sinon.
 	 */
 	public NoeudABR<Integer> rechercheNoeud(int valeur)
@@ -228,103 +220,8 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 	}
 
 
-	/**
-	 * Méthode qui retourne le noeud correspondant à la première valeur du sous-arbre dont le noeud courant est la racine.
-	 * @return le noeud correspondant à la première valeur du sous-arbre courant.
-	 */
-	public NoeudABR<Integer> premierNoeud()
-	{
-		if(this._filsG==null)
-			return this;
-		else
-			return this._filsG.premierNoeud();
-	}
-
-
-	/**
-	 * Méthode qui retourne le noeud correspondant à la dernière valeur du sous-arbre dont le noeud courant est la racine.
-	 * @return le noeud correspondant à la dernière valeur du sous-arbre courant.
-	 */
-	public NoeudABR<Integer> dernierNoeud()
-	{
-		if(this._filsD==null)
-			return this;
-		else
-			return this._filsD.premierNoeud();
-	}
-
-
-	/**
-	 * Méthode récursive qui retourne le père du noeud considéré,
-	 * dans le sous-arbre dont le noeud courant est la racine.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud père du noeud considéré, dans le sous-arbre courant.
-	 */
-	public NoeudABR<Integer> noeudPere(NoeudABR<Integer> noeud, NoeudABR<Integer> pereCour)
-	{
-			if( (this._valeur - noeud.getValeur())>0)
-			{
-				if(this._filsG!=null)
-				{
-					return _filsG.noeudPere(noeud,this);
-				}else
-				{
-					return null;
-				}
-			}else if( (this._valeur - noeud.getValeur())<0)
-			{
-				if(this._filsD!=null)
-				{
-					return _filsD.noeudPere(noeud,this);
-				}else
-				{
-					return null;
-
-				}
-			}else
-				return pereCour;
-
-
-	}
 
 
 
-	public NoeudABR<Integer> noeudSuivant(NoeudABR<Integer> noeud, NoeudABR<Integer> suivantCour)
-	{
-		if( (this._valeur - noeud.getValeur())>0)
-		{
-			if(this._filsG!=null)
-			{
-				return _filsG.noeudSuivant(noeud,this);
-			}else
-			{
-				return null;
-			}
-		}else if((this._valeur - noeud.getValeur())<0)
-		{
-			if(this._filsD!=null)
-			{
-				return _filsD.noeudSuivant(noeud,suivantCour);
-			}else
-			{
-				return null;
-
-			}
-		}else
-			return suivantCour;
-
-
-	}
-
-
-	/**
-	 * Méthode récursive qui retourne le noeud précédent du noeud considéré,
-	 * dans le sous-arbre dont le noeud courant est la racine.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud précédent du noeud considéré, dans le sous-arbre courant.
-	 */
-//	public NoeudABR<V> noeudPrecedent(NoeudABR<V> noeud, NoeudABR<V> precedentCour){
-//
-//	}
 
 }

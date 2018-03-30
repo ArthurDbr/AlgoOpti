@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * Classe ABR<Integer> : classe générique qui représente un arbre binaire de recherche.
  *
@@ -17,7 +19,10 @@ public class ABR<Integer extends Comparable<Integer>> {
 		_racine = null;
 
 	}
-
+	
+	public ABR(NoeudABR<Integer> r) {
+		_racine = r;
+	}
 
 	/**
 	 * Méthode toString() de ABR.
@@ -159,6 +164,10 @@ public class ABR<Integer extends Comparable<Integer>> {
 		return arbreVide()?null:_racine.noeudSuivant(noeud,null);
 
 
+	}
+	
+	public static void main (String [] args) throws IOException{
+		
 	}
 
 

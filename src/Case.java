@@ -13,6 +13,13 @@ public class Case{
     }
   }
   
+  public Case(int min, int max, ABR arbre){
+	    this.min = min;
+	    this.max = max;
+	    this.abr = arbre;
+	  }
+  
+  
   public int getMin() {
 	  return this.min;
   }
@@ -33,7 +40,7 @@ public class Case{
   }
 
   public void ajoutValeur(int v) {
-	  if ((v > min) && (v < max)) {
+	  if ((v >= min) && (v <= max)) {
 		  this.abr.ajoutValeur(v);
 	  }
   }

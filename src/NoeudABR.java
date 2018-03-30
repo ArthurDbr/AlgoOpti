@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 /**
  * Classe NoeudABR<V> : classe générique qui représente un noeud d'un arbre binaire de recherche.
  *
@@ -159,6 +161,8 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 
 
 	}
+	
+	
 
 
 	/**
@@ -326,5 +330,6 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 //	public NoeudABR<V> noeudPrecedent(NoeudABR<V> noeud, NoeudABR<V> precedentCour){
 //
 //	}
+
 
 }

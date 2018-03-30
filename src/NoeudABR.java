@@ -93,12 +93,12 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 		String valeurs = "";
 
 		if(_filsG != null)
-			valeurs +=  "G"+ _filsG.toString() + " ; ";
+			valeurs +=   _filsG.toString() + " : ";
 
 		valeurs += _valeur;
 
 		if(_filsD != null)
-			valeurs += " ;D " + _filsD.toString();
+			valeurs += " : " + _filsD.toString();
 
 		return valeurs;
 	}

@@ -25,12 +25,11 @@ public class ABR<Integer extends Comparable<Integer>> {
 	 * 		   dans l'ordre correspondant au type générique V.
 	 */
 	public String toString(){
-		String valeurs = "[";
+		String valeurs = "";
 
 		if(!arbreVide())
 			valeurs += _racine.toString();
 
-		valeurs += "]";
 
 		return valeurs;
 	}

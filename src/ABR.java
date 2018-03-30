@@ -59,7 +59,7 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode qui teste si l'ABR est vide.
+	 * Methode qui teste si l'ABR est vide.
 	 * @return vrai si l'ABR est vide ; faux sinon.
 	 */
 	public boolean arbreVide()
@@ -69,9 +69,9 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui ajoute une valeur dans l'ABR, si elle n'est pas déjà présente.
-	 * @param valeur : la valeur à ajouter à l'ABR.
-	 * @return le noeud correspondant soit à la valeur ajoutée, soit à la valeur déjà présente.
+	 * Methode recursive qui ajoute une valeur dans l'ABR, si elle n'est pas deja� presente.
+	 * @param valeur : la valeur a� ajouter à l'ABR.
+	 * @return le noeud correspondant soit a� la valeur ajoutee, soit a� la valeur deja� presente.
 	 */
 	public void ajoutValeur(int valeur)
 	{
@@ -89,8 +89,8 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui retourne le nombre de noeuds de l'ABR.
-	 * @return le nombre de noeuds présents dans l'ABR.
+	 * Methode recursive qui retourne le nombre de noeuds de l'ABR.
+	 * @return le nombre de noeuds presents dans l'ABR.
 	 */
 	public int nbNoeuds()
 	{
@@ -99,15 +99,16 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 
 	/**
-	 * Méthode récursive qui recherche une valeur dans l'ABR.
-	 * @param valeur : la valeur à chercher.
-	 * @return le noeud correspondant à la valeur recherchée
-	 * 		   si elle est présente dans l'ABR ; null, sinon.
+	 * Methode recursive qui recherche une valeur dans l'ABR.
+	 * @param valeur : la valeur a� chercher.
+	 * @return le noeud correspondant à la valeur recherchee
+	 * 		   si elle est presente dans l'ABR ; null, sinon.
 	 */
 	public NoeudABR<Integer> rechercheNoeud(int valeur)
 	{
 		return arbreVide()?null:_racine.rechercheNoeud(valeur);
 	}
+
 
 	/**
 	 * Méthode qui teste si une valeur appartient à l'ABR.
@@ -169,8 +170,6 @@ public class ABR<Integer extends Comparable<Integer>> {
 	public static void main (String [] args) throws IOException{
 		
 	}
-
-
 
 
 }

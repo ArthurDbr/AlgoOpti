@@ -25,7 +25,7 @@ public class Case{
   }
 
   public void draw(){
-    System.out.println(this.abr.toString());
+    System.out.println("["+this.min+" : "+this.max+" ; "+this.abr.toString()+"]");
   }
   
   public String getAllNoeud() {

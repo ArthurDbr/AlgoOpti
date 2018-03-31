@@ -67,7 +67,7 @@ public class main{
         	  tabrToAbr(tabr);
         	  break;
           case 9 : 
-        	  boolean b = verifBoiro(tabr);
+        	  boolean b = verif(tabr);
         	  System.out.print(b);
 
           default :
@@ -142,7 +142,7 @@ public class main{
 			  intervalle = tabr[i].getMax();
 		  }
 	  }
-	  
+	  System.out.println(tabr.length);
 	  return verif;
   }
   
@@ -150,15 +150,15 @@ public class main{
 	  boolean verif = true;
 	  for(int i = 0; i < tabr.length; i++) {
 		  if( tabr[i] != null) {
-			  if(tabr[i].getMin() > tabr[i].getMax())  // condition a verifiée
+			  if(tabr[i].getMin() >= tabr[i].getMax())  // condition a) verifiée
 				  verif = false;
-			  if(i < tabr.length - 1) {
-				  if(tabr[i].getMax() > tabr[i].getMin()) //condition b et c verifiée
+			  if(i < (tabr.length - 1)) {
+				  if(tabr[i].getMax() >= tabr[i+1].getMin()) //condition b) et c) verifiée
 					  verif = false;
-					  
 			  }
 		  }
 	  }
+	  
 	  return verif;
   }
   

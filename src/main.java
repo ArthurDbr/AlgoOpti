@@ -14,35 +14,7 @@ public class main{
 
   public static void main (String [] args) throws IOException{
       
-	  NoeudABR<Integer> n;
-	  n = new NoeudABR(2);
-	  n.ajoutValeur(5);
-	  n.ajoutValeur(2);
-	  n.ajoutValeur(15);
-	  n.ajoutValeur(6);
-	  n.ajoutValeur(19);
-	  n.ajoutValeur(1);
-	  n.ajoutValeur(3);
-	  System.out.println(n.toString());
-	
-	  
-	  ABR a;
-	  a = new ABR(n);
-	  a.ajoutValeur(3);
-	  a.ajoutValeur(5);
-	  System.out.println(a.toString());
-	  a.remove(5);
-	  System.out.println(a.toString());
-	  
-	  Case c;
-	  c = new Case(1, 20, a);
-	  System.out.println(c.getMin());
-	  System.out.println(c.getMax());
-	  System.out.println(c.getAbr().toString());
-	  c.ajoutValeur(20);
-	  System.out.println(c.getAbr().toString());
-	  c.remove(20);
-	  System.out.println(c.getAbr().toString());
+	 
 	  
 	  /*String nomfic;
 	  System.out.println("Entrer le nom de votre fichier .txt");
@@ -57,7 +29,7 @@ public class main{
     	  tabr[i].draw();
       }*/
 	  
-     /* String nomfic;
+      String nomfic;
       int select, val;
       while( fin){
         System.out.println("Veuillez faire un choix");
@@ -77,7 +49,10 @@ public class main{
             break;
           case 2:
             for(int i = 0; i < tabr.length; i++){
-              tabr[i].draw();
+            	if( tabr[i] != null) {
+            		tabr[i].draw();
+            	}
+              
             }
             break;
           case 3:
@@ -86,14 +61,11 @@ public class main{
 
           case 4 : 
         	   System.out.println("Entrer le nom de votre fichier .txt correspondant à votre tabr ");
-              nomfic = scan.next();
-              lireFichier(nomfic);
-        	  System.out.println("saisir la valeur a ajouter");
-        	  val = scan.nextInt();
-        	  ajoutValeur(val);
-        	  for(int i = 0; i < tabr.length; i++){
-                 tabr[i].draw();
-              }
+               nomfic = scan.next();
+               lireFichier(nomfic);
+        	   System.out.println("saisir la valeur a ajouter");
+        	   val = scan.nextInt();
+        	   ajoutValeur(val);
         	  break;
           
           case 7:
@@ -108,7 +80,7 @@ public class main{
             break;
         }
       }
-      scan.close();*/
+      scan.close();
       
       
   }
@@ -128,14 +100,29 @@ public class main{
 	  tabr[indice].setMin(min);
 	  tabr[indice].setMax(max);
 	  tabr[indice].addValeur(valeurs);
+	  indice++;
 	  for(int i = indice; i < tabr.length; i++) {
-		  min    = tabr[indice+1].getMin();
-		  max    = tabr[indice+1].getMax();
-		  valeur = tabr[indice+1].getValeurs();
-		  valeurs = valeur.split(":");
-		  tabr[indice].setMin(min);
-		  tabr[indice].setMax(max);
-//		  tabr[indice].addValeur(valeurs);
+		  if( tabr[i] != null) {
+			  //suppression des valeurs
+			  valeur = tabr[i].getValeurs();
+			  valeurs = valeur.split(":");
+			  for(int j = 0; j < valeurs.length; j++){
+				  tabr[i].remove(Integer.parseInt(valeurs[j]));
+			  }
+			  
+			  if( i == tabr.length-1) {
+				  tabr[i] = null;
+			  }else {
+				  //recupération de min, max et des valeurs à tabr[i+1]
+				  min    = tabr[i+1].getMin();
+				  max    = tabr[i+1].getMax();
+				  valeur = tabr[i+1].getValeurs();
+				  valeurs = valeur.split(":");
+				  tabr[i].setMin(min);
+				  tabr[i].setMax(max);
+				  tabr[i].addValeur(valeurs);
+			  }
+		  }
 	  }
 
 	  
@@ -147,11 +134,13 @@ public class main{
 	  boolean verif = true;
 	  int intervalle = 0;
 	  for(int i = 0; i < tabr.length; i++) {
-		  if(tabr[i].getMin() > tabr[i].getMax()) verif = false;
-		  if( i > 0 ) {
-			  if( tabr[i].getMin() < intervalle)  verif = false;  
+		  if( tabr[i] != null) {
+			  if(tabr[i].getMin() > tabr[i].getMax()) verif = false;
+			  if( i > 0 ) {
+				  if( tabr[i].getMin() < intervalle)  verif = false;  
+			  }
+			  intervalle = tabr[i].getMax();
 		  }
-		  intervalle = tabr[i].getMax();
 	  }
 	  
 	  return verif;
@@ -162,10 +151,12 @@ public class main{
 	  String split[];
 	  abr = new ABR();
 	  for(int i = 0; i < tabr.length; i++) {
-		  val = tabr[i].getValeurs();
-		  split = val.split(":");
-		  for(int j = 0; j < split.length; j++){
-		     abr.ajoutValeur(Integer.parseInt(split[i]));
+		  if( tabr[i] != null) {
+			  val = tabr[i].getValeurs();
+			  split = val.split(":");
+			  for(int j = 0; j < split.length; j++){
+			     abr.ajoutValeur(Integer.parseInt(split[i]));
+			  }
 		  }
 	  }
   }
@@ -181,7 +172,9 @@ public class main{
 	    {
 	    	PrintWriter pWriter = new PrintWriter(new FileWriter(nomfic, true));
 	    	for(int i = 0; i < tabr.length; i++) {
-	    		pWriter.print(tabr[i].getMin()+":"+tabr[i].getMax()+";"+tabr[i].getValeurs()+"\n");
+	    		if( tabr[i] != null) {
+	    			pWriter.print(tabr[i].getMin()+":"+tabr[i].getMax()+";"+tabr[i].getValeurs()+"\n");
+	    		}
 	    	}
 	        pWriter.close() ;
 
@@ -271,13 +264,15 @@ public class main{
   public static int bonneCase(int v) {
 	  int i = 0;
 	  while (i < tabr.length) {
-		  if ((v >= tabr[i].getMin()) && (v <= tabr[i].getMax())) {
-			  return i;
-		  }else {
-			  i++;
+		  if( tabr[i] != null) {
+			  if ((v >= tabr[i].getMin()) && (v <= tabr[i].getMax())) {
+				  return i;
+			  }else {
+				  i++;
+			  }
 		  }
 	  }
-	  if ((v >= tabr[i].getMin()) && (v <= tabr[i].getMax())) {
+	  if ( (tabr[i] != null) && (v >= tabr[i].getMin()) && (v <= tabr[i].getMax())) {
 		  return i;
 	  }else {
 		  return -1;
@@ -303,15 +298,6 @@ public class main{
 	  }
   }
 
-  /*public void fusionCasesTabr(int pos) {
-	  if (pos < tabr.length-1) {
-		  Case c = new Case(tabr[pos].getMin(), tabr[pos+1].getMax(),
-				  tabr[pos+1].getAbr().fusion(tabr[pos+1]));
-	  }
-  }*/
   
-  public void supprimerCase(int i) {
-	  
-  }
 
 }

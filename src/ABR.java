@@ -86,11 +86,6 @@ public class ABR<Integer extends Comparable<Integer>> {
 			this._racine.ajoutValeur(valeur);
 	}
 	
-	public void supprimerValeur(int v) {
-		
-		
-	}
-
 
 	/**
 	 * Methode recursive qui retourne le nombre de noeuds de l'ABR.

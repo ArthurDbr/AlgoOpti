@@ -50,8 +50,8 @@ public class Case{
 	  }
   }
   
-  public void supprimerValeur(int v) {
-	  abr.supprimerValeur(v);
+  public void remove(int v) {
+	  abr.remove(v);
   }
 
 }

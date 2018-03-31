@@ -184,6 +184,35 @@ public class ABR<Integer extends Comparable<Integer>> {
 		
 	}*/
 	
+	public boolean remove(int value) {
+
+        if (_racine == null)
+
+              return false;
+
+        else {
+
+              if (_racine.getValeur() == value) {
+
+                    NoeudABR auxRoot = new NoeudABR(0);
+
+                    auxRoot.setFilsGauche(_racine);
+
+                    boolean result = _racine.remove(value, auxRoot);
+
+                    _racine = auxRoot.getFilsGauche();
+
+                    return result;
+
+              } else {
+
+                    return _racine.remove(value, null);
+
+              }
+
+        }
+
+  }
 	
 
 }

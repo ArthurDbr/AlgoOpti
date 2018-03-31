@@ -24,14 +24,14 @@ public class main{
 	  n.ajoutValeur(1);
 	  n.ajoutValeur(3);
 	  System.out.println(n.toString());
-	  NoeudABR nd = new NoeudABR(15);
-	 System.out.print( n.noeudSuivant(n, nd).toString());
 	
 	  
-	  /*ABR a;
+	  ABR a;
 	  a = new ABR(n);
 	  a.ajoutValeur(3);
 	  a.ajoutValeur(5);
+	  System.out.println(a.toString());
+	  a.remove(5);
 	  System.out.println(a.toString());
 	  
 	  Case c;
@@ -41,8 +41,10 @@ public class main{
 	  System.out.println(c.getAbr().toString());
 	  c.ajoutValeur(20);
 	  System.out.println(c.getAbr().toString());
+	  c.remove(20);
+	  System.out.println(c.getAbr().toString());
 	  
-	  String nomfic;
+	  /*String nomfic;
 	  System.out.println("Entrer le nom de votre fichier .txt");
       nomfic = scan.next();
       lireFichier(nomfic);
@@ -257,10 +259,10 @@ public class main{
   
   
   
-  public void supprimerValeur(int v) {
+  public void remove(int v) {
 	  int c = 0;
 	  if (( c = bonneCase(v)) != -1 ) {
-		  tabr[c].supprimerValeur(c);
+		  tabr[c].remove(c);
 	  }else {
 		  System.out.print("la valeur n existe pas dans le tabr");
 	  }

@@ -322,6 +322,66 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 	}
 	
 	
+	public boolean remove(int value, NoeudABR parent) {
+
+        if (value < _valeur) {
+
+              if (_filsG != null)
+
+                    return _filsG.remove(value, this);
+
+              else
+
+                    return false;
+
+        } else if (value > _valeur) {
+
+              if (_filsD != null)
+
+                    return _filsD.remove(value, this);
+
+              else
+
+                    return false;
+
+        } else {
+
+              if (_filsG != null && _filsD != null) {
+
+                    _valeur = _filsD.minValue();
+
+                    _filsD.remove(_valeur, this);
+
+              } else if (parent._filsG == this) {
+
+                    parent._filsG = (_filsG != null) ? _filsG : _filsD;
+
+              } else if (parent._filsD == this) {
+
+                    parent._filsD = (_filsG != null) ? _filsG : _filsD;
+
+              }
+
+              return true;
+
+        }
+
+  }
+
+
+
+  public int minValue() {
+
+        if (_filsG == null)
+
+              return _valeur;
+
+        else
+
+              return _filsG.minValue();
+
+  }
+	
 
 	
 

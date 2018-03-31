@@ -120,61 +120,15 @@ public class ABR<Integer extends Comparable<Integer>> {
 	}
 
 
-	/**
-	 * Méthode qui retourne le premier noeud de l'ABR.
-	 * @return le premier noeud de l'ABR.
-	 */
-	public NoeudABR<Integer> premierNoeud()
-	{
-		return arbreVide()?null:_racine.premierNoeud();
-
-	}
 
 
-	/**
-	 * Méthode qui retourne le dernier noeud de l'ABR.
-	 * @return le dernier noeud de l'ABR.
-	 */
-	public NoeudABR<Integer> dernierNoeud()
-	{
-		return arbreVide()?null:_racine.dernierNoeud();
-
-	}
 
 
-	/**
-	 * Méthode récursive qui retourne le père du noeud considéré, dans l'ABR.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud père du noeud considéré, dans l'ABR.
-	 */
-	public NoeudABR<Integer> noeudPere(NoeudABR<Integer> noeud)
-	{
-		return arbreVide()?null:_racine.noeudPere(noeud,null);
-
-	}
 
 
-	/**
-	 * Méthode récursive qui retourne le noeud suivant du noeud courant, dans l'ABR.
-	 * @param noeud : le noeud considéré.
-	 * @return le noeud suivant du noeud considéré, dans l'ABR.
-	 */
-	public NoeudABR<Integer> noeudSuivant(NoeudABR<Integer> noeud)
-	{
-		return arbreVide()?null:_racine.noeudSuivant(noeud,null);
 
 
-	}
 	
-
-	/*public ABR fusion(ABR arbre) {
-		
-	}
-	
-	public int[] contenu() {
-		int[] cont = new int[nbNoeuds()];
-		
-	}*/
 	
 	public boolean remove(int value) {
 

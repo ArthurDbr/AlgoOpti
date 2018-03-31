@@ -26,12 +26,9 @@ public class main{
         System.out.println(" 2 : afficher TABR");
         System.out.println(" 3 : Verif TABR");
         System.out.println(" 4 : Ajouter une valeur");
-
         System.out.println(" 5 : Supprimer une valeur");
         System.out.println(" 6 : Fusion TABR");
         System.out.println(" 7 : TABR vers ABR");
-        System.out.println(" 9 : verifier le tabr");
-        System.out.println(" 8 : TABR vers ABR");
 
         select = scan.nextInt();
         switch (select) {
@@ -46,7 +43,7 @@ public class main{
             }
             break;
           case 3:
-        	  verif(tabr);
+        	  System.out.println(verif(tabr));
         	  break;
 
           case 4 : 
@@ -66,9 +63,6 @@ public class main{
           case 7:
         	  tabrToAbr(tabr);
         	  break;
-          case 9 : 
-        	  boolean b = verifBoiro(tabr);
-        	  System.out.print(b);
 
           default :
             fin = false;
@@ -132,12 +126,22 @@ public class main{
   public static boolean verif(Case tabr[]) {
 	  boolean verif = true;
 	  int intervalle = 0;
+	  String valeur;
+	  String valeurs[];
 	  for(int i = 0; i < tabr.length; i++) {
 		  if( tabr[i] != null) {
-			  if(tabr[i].getMin() > tabr[i].getMax()) 
+			  if(tabr[i].getMin() >= tabr[i].getMax()) 
 				  verif = false;
 			  if( i > 0 ) {
-				  if( tabr[i].getMin() < intervalle)  verif = false;  
+				  if( tabr[i].getMin() <= intervalle)  verif = false;  
+			  }
+			  valeur = tabr[i].getValeurs();
+			  valeurs = valeur.split(":");
+			  for(int j = 0; j < valeurs.length; j++) {
+				  if(Integer.parseInt(valeurs[j]) < tabr[i].getMin() ||
+					Integer.parseInt(valeurs[j]) > tabr[i].getMax()) {
+					  verif = false;
+				  }
 			  }
 			  intervalle = tabr[i].getMax();
 		  }
@@ -146,21 +150,6 @@ public class main{
 	  return verif;
   }
   
-  public static boolean  verifBoiro(Case tabr[]) {
-	  boolean verif = true;
-	  for(int i = 0; i < tabr.length; i++) {
-		  if( tabr[i] != null) {
-			  if(tabr[i].getMin() > tabr[i].getMax())  // condition a verifiée
-				  verif = false;
-			  if(i < tabr.length - 1) {
-				  if(tabr[i].getMax() > tabr[i].getMin()) //condition b et c verifiée
-					  verif = false;
-					  
-			  }
-		  }
-	  }
-	  return verif;
-  }
   
   public static void tabrToAbr(Case tabr[]) {
 	  String val="";
@@ -309,9 +298,9 @@ public class main{
   
   
   public static void remove(int v) {
-	  int c = 0;
+	  int c;
 	  if (( c = bonneCase(v)) != -1 ) {
-		  tabr[c].remove(c);
+		  tabr[bonneCase(v)].remove(c);
 	  }else {
 		  System.out.print("la valeur n existe pas dans le tabr");
 	  }

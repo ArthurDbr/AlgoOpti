@@ -55,13 +55,13 @@ public class Case{
   }
 
   public void ajoutValeur(int v) {
-	  if ((v >= min) && (v <= max)) {
+	  if ((v >= this.min) && (v <= this.max)) {
 		  this.abr.ajoutValeur(v);
 	  }
   }
   
   public void remove(int v) {
-	  abr.remove(v);
+	  this.abr.remove(v);
   }
 
 }

@@ -1,12 +1,11 @@
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main{
 
     private static Case tabr[];
-    private static ABR abr;
+    private static ABR<Integer> abr;
 
     private static Boolean fin = true;
     private static Scanner scan = new Scanner(System.in);
@@ -14,64 +13,53 @@ public class main{
 
   public static void main (String [] args) throws IOException{
       
-	 
-	  
-	  /*String nomfic;
-	  System.out.println("Entrer le nom de votre fichier .txt");
-      nomfic = scan.next();
-      lireFichier(nomfic);
-      for (int i = 0 ; i< tabr.length; i++) {
-    	  tabr[i].draw();
-      }
-      tabr[bonneCase(78)].ajoutValeur(78);
-      System.out.println("\n");
-      for (int i = 0 ; i< tabr.length; i++) {
-    	  tabr[i].draw();
-      }*/
-	  
       String nomfic;
       int select, val;
+	  
+      System.out.println("Entrer le nom de votre fichier ( en .txt)");
+      nomfic = scan.next();
+      lireFichier(nomfic);
+      
       while( fin){
         System.out.println("Veuillez faire un choix");
-        System.out.println(" 1 : fichier vers TABR");
+        System.out.println(" 1 : TABR vers fichier");
         System.out.println(" 2 : afficher TABR");
-        System.out.println(" 3 : TABR vers fichier");
-
+        System.out.println(" 3 : Verif TABR");
         System.out.println(" 4 : Ajouter une valeur");
-        System.out.println(" 7 : Fusion TABR");
-        System.out.println(" 8 : TABR vers ABR");
+        System.out.println(" 5 : Supprimer une valeur");
+        System.out.println(" 6 : Fusion TABR");
+        System.out.println(" 7 : TABR vers ABR");
         select = scan.nextInt();
         switch (select) {
           case 1:
-            System.out.println("Entrer le nom de votre fichier .txt");
-            nomfic = scan.next();
-            lireFichier(nomfic);
+        	TabrToFichier(tabr);
             break;
           case 2:
             for(int i = 0; i < tabr.length; i++){
             	if( tabr[i] != null) {
             		tabr[i].draw();
             	}
-              
             }
             break;
           case 3:
-        	  TabrToFichier(tabr);
+        	  verif(tabr);
         	  break;
 
           case 4 : 
-        	   System.out.println("Entrer le nom de votre fichier .txt correspondant à votre tabr ");
-               nomfic = scan.next();
-               lireFichier(nomfic);
         	   System.out.println("saisir la valeur a ajouter");
         	   val = scan.nextInt();
         	   ajoutValeur(val);
         	  break;
-          
-          case 7:
+          case 5 :
+        	  int x;
+        	  System.out.print("Quelle est la valeur a supprimer : ");
+        	  x = scan.nextInt();
+        	  remove(x);
+        	  break;
+          case 6:
         	  fusionTABR(tabr);
         	  break;
-          case 8:
+          case 7:
         	  tabrToAbr(tabr);
         	  break;
 
@@ -86,51 +74,55 @@ public class main{
   }
   
   public static void fusionTABR(Case tabr[]) {
-	  int indice;
+	  int indice = -1;
 	  int min;
 	  int max;
 	  String valeur;
 	  String valeurs[];
-	  System.out.print("Veuillez entrer l'indice : ");
-	  indice = scan.nextInt();
-	  min = tabr[indice].getMin();
-	  max = tabr[indice+1].getMax();
-	  valeur = tabr[indice+1].getValeurs();
-	  valeurs = valeur.split(":");
-	  tabr[indice].setMin(min);
-	  tabr[indice].setMax(max);
-	  tabr[indice].addValeur(valeurs);
-	  indice++;
-	  for(int i = indice; i < tabr.length; i++) {
-		  if( tabr[i] != null) {
-			  //suppression des valeurs
-			  valeur = tabr[i].getValeurs();
-			  valeurs = valeur.split(":");
-			  for(int j = 0; j < valeurs.length; j++){
-				  tabr[i].remove(Integer.parseInt(valeurs[j]));
-			  }
-			  
-			  if( i == tabr.length-1) {
-				  tabr[i] = null;
-			  }else {
-				  //recupération de min, max et des valeurs à tabr[i+1]
-				  min    = tabr[i+1].getMin();
-				  max    = tabr[i+1].getMax();
-				  valeur = tabr[i+1].getValeurs();
+	  boolean indiceOk = false;
+	  while( indice < 0 || indice > tabr.length) {
+		  System.out.print("Veuillez entrer l'indice : ");
+		  indice = scan.nextInt();
+		  indiceOk = true;
+	  }
+	  
+	  if( indiceOk) {
+		  
+		  min = tabr[indice].getMin();
+		  max = tabr[indice+1].getMax();
+		  valeur = tabr[indice+1].getValeurs();
+		  valeurs = valeur.split(":");
+		  tabr[indice].setMin(min);
+		  tabr[indice].setMax(max);
+		  tabr[indice].addValeur(valeurs);
+		  indice++;
+		  for(int i = indice; i < tabr.length; i++) {
+			  if( tabr[i] != null) {
+				  //suppression des valeurs
+				  valeur = tabr[i].getValeurs();
 				  valeurs = valeur.split(":");
-				  tabr[i].setMin(min);
-				  tabr[i].setMax(max);
-				  tabr[i].addValeur(valeurs);
+				  for(int j = 0; j < valeurs.length; j++){
+					  tabr[i].remove(Integer.parseInt(valeurs[j]));
+				  }
+				  
+				  if( i == tabr.length-1) {
+					  tabr[i] = null;
+				  }else {
+					  //recupération de min, max et des valeurs à tabr[i+1]
+					  min    = tabr[i+1].getMin();
+					  max    = tabr[i+1].getMax();
+					  valeur = tabr[i+1].getValeurs();
+					  valeurs = valeur.split(":");
+					  tabr[i].setMin(min);
+					  tabr[i].setMax(max);
+					  tabr[i].addValeur(valeurs);
+				  }
 			  }
 		  }
 	  }
-
-	  
-
-	  
   }
   
-  public static boolean verifArthur(Case tabr[]) {
+  public static boolean verif(Case tabr[]) {
 	  boolean verif = true;
 	  int intervalle = 0;
 	  for(int i = 0; i < tabr.length; i++) {
@@ -155,10 +147,13 @@ public class main{
 			  val = tabr[i].getValeurs();
 			  split = val.split(":");
 			  for(int j = 0; j < split.length; j++){
-			     abr.ajoutValeur(Integer.parseInt(split[i]));
+			     abr.ajoutValeur(Integer.parseInt(split[j]));
 			  }
 		  }
 	  }
+	  
+	  System.out.println(abr.toString());
+	  
   }
   
   public static  boolean TabrToFichier(Case tabr[]) throws IOException{
@@ -289,7 +284,7 @@ public class main{
   
   
   
-  public void remove(int v) {
+  public static void remove(int v) {
 	  int c = 0;
 	  if (( c = bonneCase(v)) != -1 ) {
 		  tabr[c].remove(c);

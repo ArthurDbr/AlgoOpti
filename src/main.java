@@ -127,7 +127,8 @@ public class main{
 	  int intervalle = 0;
 	  for(int i = 0; i < tabr.length; i++) {
 		  if( tabr[i] != null) {
-			  if(tabr[i].getMin() > tabr[i].getMax()) verif = false;
+			  if(tabr[i].getMin() > tabr[i].getMax()) 
+				  verif = false;
 			  if( i > 0 ) {
 				  if( tabr[i].getMin() < intervalle)  verif = false;  
 			  }
@@ -135,6 +136,22 @@ public class main{
 		  }
 	  }
 	  
+	  return verif;
+  }
+  
+  public static boolean  verifBoiro() {
+	  boolean verif = true;
+	  for(int i = 0; i < tabr.length; i++) {
+		  if( tabr[i] != null) {
+			  if(tabr[i].getMin() > tabr[i].getMax())  // condition a verifiée
+				  verif = false;
+			  if(i < tabr.length - 1) {
+				  if(tabr[i].getMax() > tabr[i].getMin()) //condition b et c verifiée
+					  verif = false;
+					  
+			  }
+		  }
+	  }
 	  return verif;
   }
   

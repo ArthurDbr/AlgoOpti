@@ -56,6 +56,7 @@ public class main{
         System.out.println(" 3 : TABR vers fichier");
 
         System.out.println(" 4 : Ajouter une valeur");
+        System.out.println(" 7 : Fusion TABR");
         System.out.println(" 8 : TABR vers ABR");
         select = scan.nextInt();
         switch (select) {
@@ -83,7 +84,11 @@ public class main{
         	  for(int i = 0; i < tabr.length; i++){
                  tabr[i].draw();
               }
-
+        	  break;
+          
+          case 7:
+        	  fusionTABR(tabr);
+        	  break;
           case 8:
         	  tabrToAbr(tabr);
         	  break;
@@ -96,6 +101,36 @@ public class main{
       scan.close();
       
       
+  }
+  
+  public static void fusionTABR(Case tabr[]) {
+	  int indice;
+	  int min;
+	  int max;
+	  String valeur;
+	  String valeurs[];
+	  System.out.print("Veuillez entrer l'indice : ");
+	  indice = scan.nextInt();
+	  min = tabr[indice].getMin();
+	  max = tabr[indice+1].getMax();
+	  valeur = tabr[indice+1].getValeurs();
+	  valeurs = valeur.split(":");
+	  tabr[indice].setMin(min);
+	  tabr[indice].setMax(max);
+	  tabr[indice].addValeur(valeurs);
+	  for(int i = indice; i < tabr.length; i++) {
+		  min    = tabr[indice+1].getMin();
+		  max    = tabr[indice+1].getMax();
+		  valeur = tabr[indice+1].getValeurs();
+		  valeurs = valeur.split(":");
+		  tabr[indice].setMin(min);
+		  tabr[indice].setMax(max);
+//		  tabr[indice].addValeur(valeurs);
+	  }
+
+	  
+
+	  
   }
   
   public static boolean verifArthur(Case tabr[]) {

@@ -146,7 +146,6 @@ public class main{
 			  intervalle = tabr[i].getMax();
 		  }
 	  }
-	  
 	  return verif;
   }
   

@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class main{
@@ -13,14 +14,21 @@ public class main{
 
   public static void main (String [] args) throws IOException{
       
-	 /* NoeudABR<Integer> n;
+	  NoeudABR<Integer> n;
 	  n = new NoeudABR(2);
 	  n.ajoutValeur(5);
-	  n.ajoutValeur(9);
+	  n.ajoutValeur(2);
+	  n.ajoutValeur(15);
+	  n.ajoutValeur(6);
+	  n.ajoutValeur(19);
+	  n.ajoutValeur(1);
+	  n.ajoutValeur(3);
 	  System.out.println(n.toString());
+	  NoeudABR nd = new NoeudABR(15);
+	 System.out.print( n.noeudSuivant(n, nd).toString());
 	
 	  
-	  ABR a;
+	  /*ABR a;
 	  a = new ABR(n);
 	  a.ajoutValeur(3);
 	  a.ajoutValeur(5);
@@ -47,7 +55,7 @@ public class main{
     	  tabr[i].draw();
       }*/
 	  
-      String nomfic;
+     /* String nomfic;
       int select, val;
       while( fin){
         System.out.println("Veuillez faire un choix");
@@ -93,7 +101,7 @@ public class main{
             break;
         }
       }
-      scan.close();
+      scan.close();*/
       
       
   }
@@ -258,5 +266,15 @@ public class main{
 	  }
   }
 
+  /*public void fusionCasesTabr(int pos) {
+	  if (pos < tabr.length-1) {
+		  Case c = new Case(tabr[pos].getMin(), tabr[pos+1].getMax(),
+				  tabr[pos+1].getAbr().fusion(tabr[pos+1]));
+	  }
+  }*/
+  
+  public void supprimerCase(int i) {
+	  
+  }
 
 }

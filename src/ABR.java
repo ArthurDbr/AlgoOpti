@@ -23,6 +23,10 @@ public class ABR<Integer extends Comparable<Integer>> {
 	public ABR(NoeudABR<Integer> r) {
 		_racine = r;
 	}
+	
+	public NoeudABR<Integer> getRacine(){
+		return _racine;
+	}
 
 	/**
 	 * Méthode toString() de ABR.
@@ -171,5 +175,15 @@ public class ABR<Integer extends Comparable<Integer>> {
 		
 	}
 
+	/*public ABR fusion(ABR arbre) {
+		
+	}
+	
+	public int[] contenu() {
+		int[] cont = new int[nbNoeuds()];
+		
+	}*/
+	
+	
 
 }

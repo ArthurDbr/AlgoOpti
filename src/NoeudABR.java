@@ -1,4 +1,5 @@
-import java.io.IOException;
+import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  * Classe NoeudABR<V> : classe générique qui représente un noeud d'un arbre binaire de recherche.
@@ -104,6 +105,25 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 
 		return valeurs;
 	}
+	
+	public ArrayList contenu(ArrayList l) {
+		
+
+		if(_filsG != null) {
+			_filsG.contenu(l);
+			l.add(_filsG.getValeur());
+		}
+
+		l.add(_valeur);
+
+		if(_filsD != null) {
+			l.add(_filsD.getValeur());
+			_filsD.contenu(l);
+		}
+		return l;
+	}
+	
+	
 	
 	/**
 	 * Méthode toString() de NoeudDico.
@@ -300,6 +320,8 @@ public class NoeudABR<Integer extends Comparable<Integer>> {
 	{
 		return rechercheNoeud(valeur)!=null;
 	}
+	
+	
 
 	
 

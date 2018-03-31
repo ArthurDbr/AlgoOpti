@@ -40,6 +40,7 @@ public class main{
         System.out.println(" 4 : Ajouter une valeur");
         System.out.println(" 7 : Fusion TABR");
         System.out.println(" 8 : TABR vers ABR");
+        System.out.println(" 9 : verifier le tabr");
         select = scan.nextInt();
         switch (select) {
           case 1:
@@ -74,6 +75,9 @@ public class main{
           case 8:
         	  tabrToAbr(tabr);
         	  break;
+          case 9 : 
+        	  boolean b = verifBoiro(tabr);
+        	  System.out.print(b);
 
           default :
             fin = false;
@@ -147,7 +151,7 @@ public class main{
 	  return verif;
   }
   
-  public static boolean  verifBoiro() {
+  public static boolean  verifBoiro(Case tabr[]) {
 	  boolean verif = true;
 	  for(int i = 0; i < tabr.length; i++) {
 		  if( tabr[i] != null) {

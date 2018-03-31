@@ -19,7 +19,17 @@ public class Case{
 	    this.abr = arbre;
 	  }
   
-  
+  public void setMin(int min) {
+	  this.min = min;
+  }
+  public void setMax( int max) {
+	  this.max = max;
+  }
+  public void addValeur(String valeurs[]) {
+	  for(int i = 0; i < valeurs.length; i++){
+		 this.abr.ajoutValeur(Integer.parseInt(valeurs[i]));
+	  }
+  }
   public int getMin() {
 	  return this.min;
   }

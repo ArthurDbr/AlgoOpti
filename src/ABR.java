@@ -171,9 +171,6 @@ public class ABR<Integer extends Comparable<Integer>> {
 
 	}
 	
-	public static void main (String [] args) throws IOException{
-		
-	}
 
 	/*public ABR fusion(ABR arbre) {
 		
